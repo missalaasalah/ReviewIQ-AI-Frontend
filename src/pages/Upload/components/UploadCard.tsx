@@ -1,26 +1,74 @@
-import { Paper, Typography, Button } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Box,
+  Button
+} from "@mui/material";
+
 
 export default function UploadCard() {
+
+
   return (
-    <Paper
+
+    <Card
       sx={{
-        p: 5,
-        textAlign: "center",
-        border: "2px dashed #1976d2",
         borderRadius: 3,
+        boxShadow: 3,
       }}
     >
-      <Typography variant="h5" mb={2}>
-        Upload Reviews CSV
-      </Typography>
 
-      <Typography color="text.secondary" mb={3}>
-        Drag & Drop your CSV file here
-      </Typography>
+      <CardContent>
 
-      <Button variant="contained">
-        Choose File
-      </Button>
-    </Paper>
+
+        <Typography
+          variant="h5"
+          sx={{
+            mb: 2
+          }}
+        >
+          Upload Reviews CSV
+        </Typography>
+
+
+
+        <Typography
+          color="text.secondary"
+          sx={{
+            mb: 3
+          }}
+        >
+          Drag & Drop your CSV file here
+        </Typography>
+
+
+
+        <Box>
+
+          <input
+            type="file"
+            accept=".csv,.xlsx"
+          />
+
+        </Box>
+
+
+
+        <Button
+          variant="contained"
+          sx={{
+            mt: 3
+          }}
+        >
+          Analyze Reviews
+        </Button>
+
+
+      </CardContent>
+
+
+    </Card>
+
   );
 }
