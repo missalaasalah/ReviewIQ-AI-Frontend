@@ -7,7 +7,7 @@ export default function AIInsights() {
         AI Insights
       </Typography>
 
-      <Typography mt={2}>
+      <Typography sx={{ mt: 2 }}>
         AI recommendations will appear here.
       </Typography>
     </Paper>

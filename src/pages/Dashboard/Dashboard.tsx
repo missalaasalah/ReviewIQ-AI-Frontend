@@ -8,7 +8,10 @@ import AIInsights from "./components/AIInsights";
 export default function Dashboard() {
   return (
     <>
-      <Typography variant="h4" mb={3}>
+      <Typography
+        variant="h4"
+        sx={{ mb: 3 }}
+      >
         Executive Overview
       </Typography>
 

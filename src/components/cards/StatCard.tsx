@@ -37,20 +37,27 @@ export default function StatCard({ title, value }: Props) {
       <CardContent>
         <TrendingUpIcon
           color="primary"
-          sx={{ fontSize: 32, mb: 1 }}
+          sx={{
+            fontSize: 32,
+            mb: 1,
+          }}
         />
 
         <Typography
           color="text.secondary"
-          fontWeight={600}
+          sx={{
+            fontWeight: 600,
+          }}
         >
           {title}
         </Typography>
 
         <Typography
           variant="h4"
-          fontWeight="bold"
-          mt={1}
+          sx={{
+            mt: 1,
+            fontWeight: "bold",
+          }}
         >
           {value}
         </Typography>
@@ -58,7 +65,9 @@ export default function StatCard({ title, value }: Props) {
         <Typography
           variant="body2"
           color="success.main"
-          mt={1}
+          sx={{
+            mt: 1,
+          }}
         >
           ↑ Updated recently
         </Typography>

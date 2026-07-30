@@ -6,7 +6,10 @@ import RecommendationTable from "./components/RecommendationTable";
 export default function Recommendations() {
   return (
     <Box>
-      <Typography variant="h4" mb={4}>
+      <Typography
+        variant="h4"
+        sx={{ mb: 4 }}
+      >
         AI Recommendations
       </Typography>
 

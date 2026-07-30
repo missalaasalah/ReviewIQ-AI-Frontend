@@ -6,7 +6,10 @@ import BranchTable from "./components/BranchTable";
 export default function Branches() {
   return (
     <Box>
-      <Typography variant="h4" mb={4}>
+      <Typography
+        variant="h4"
+        sx={{ mb: 4 }}
+      >
         Branch Performance
       </Typography>
 

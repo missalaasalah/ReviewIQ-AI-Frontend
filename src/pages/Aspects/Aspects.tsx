@@ -6,7 +6,10 @@ import AspectTable from "./components/AspectTable";
 export default function Aspects() {
   return (
     <Box>
-      <Typography variant="h4" mb={4}>
+      <Typography
+        variant="h4"
+        sx={{ mb: 4 }}
+      >
         Aspect Analysis
       </Typography>
 

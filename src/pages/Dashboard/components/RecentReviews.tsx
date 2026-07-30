@@ -7,7 +7,7 @@ export default function RecentReviews() {
         Recent Reviews
       </Typography>
 
-      <Typography mt={2}>
+      <Typography sx={{ mt: 2 }}>
         Recent customer reviews will appear here.
       </Typography>
     </Paper>

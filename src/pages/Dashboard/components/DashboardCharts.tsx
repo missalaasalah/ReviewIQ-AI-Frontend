@@ -6,10 +6,12 @@ import AspectChart from "../../../components/charts/AspectChart";
 export default function DashboardCharts() {
   return (
     <Box
-      display="flex"
-      gap={3}
-      flexWrap="wrap"
-      mt={4}
+      sx={{
+        display: "flex",
+        gap: 3,
+        flexWrap: "wrap",
+        mt: 4,
+      }}
     >
       <Paper
         sx={{
@@ -18,7 +20,10 @@ export default function DashboardCharts() {
           p: 2,
         }}
       >
-        <Typography variant="h6" mb={2}>
+        <Typography
+          variant="h6"
+          sx={{ mb: 2 }}
+        >
           Sentiment Distribution
         </Typography>
 
@@ -32,7 +37,10 @@ export default function DashboardCharts() {
           p: 2,
         }}
       >
-        <Typography variant="h6" mb={2}>
+        <Typography
+          variant="h6"
+          sx={{ mb: 2 }}
+        >
           Aspect Analysis
         </Typography>
 

@@ -4,10 +4,12 @@ import StatCard from "../../../components/cards/StatCard";
 export default function KPICards() {
   return (
     <Box
-      display="flex"
-      gap={3}
-      flexWrap="wrap"
-      mb={4}
+      sx={{
+        display: "flex",
+        gap: 3,
+        flexWrap: "wrap",
+        mb: 4,
+      }}
     >
       <StatCard title="Overall Rating" value="⭐ 4.3" />
 
