@@ -1,8 +1,9 @@
-# ReviewIQ AI
+# ReviewIQ AI - Frontend
 
-Customer Review Intelligence Platform
+ReviewIQ AI is an AI-powered Customer Review Intelligence Platform that helps businesses analyze customer reviews and gain actionable insights.
 
-## Features
+## 🚀 Features
+
 - Dashboard
 - Upload Reviews
 - Aspect Analysis
@@ -10,10 +11,28 @@ Customer Review Intelligence Platform
 - Trend Analysis
 - AI Recommendations
 - User Profile
+- Settings
 
-## Tech Stack
-React
-TypeScript
-Vite
-Material UI
-React Router
+## 🛠️ Built With
+
+- React
+- TypeScript
+- Vite
+- Material UI
+- React Router
+- Recharts
+
+## 📦 Run Locally
+
+```bash
+npm install
+npm run dev
+```
+
+## 🌐 Live Demo
+
+https://review-iq-ai-frontend.vercel.app
+
+## 📂 GitHub Repository
+
+https://github.com/missalaasalah/ReviewIQ-AI-Frontend
