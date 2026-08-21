@@ -15,58 +15,111 @@ type Props = {
 export default function StatCard({ title, value }: Props) {
   return (
     <Card
+      elevation={0}
       sx={{
         minWidth: 230,
-        borderRadius: 4,
-        boxShadow: 4,
-        transition: "0.3s",
+        borderRadius: "18px",
+
+        background:
+          "linear-gradient(145deg, #FFFDF8 0%, #F8F0DC 100%)",
+
+        border: "1px solid #E4D7B8",
+
+        boxShadow:
+          "0 8px 24px rgba(91, 70, 25, 0.08)",
+
+        overflow: "hidden",
+
+        transition: "all 0.25s ease",
+
         cursor: "pointer",
+
         "&:hover": {
           transform: "translateY(-5px)",
-          boxShadow: 8,
+          borderColor: "#C9A227",
+
+          boxShadow:
+            "0 14px 32px rgba(91, 70, 25, 0.15)",
         },
       }}
     >
+      {/* Gold Accent */}
       <Box
         sx={{
           height: 6,
-          background: "#1976d2",
+
+          background:
+            "linear-gradient(90deg, #9A7412, #C9A227, #E5C87B)",
         }}
       />
 
-      <CardContent>
-        <TrendingUpIcon
-          color="primary"
+      <CardContent
+        sx={{
+          p: 3,
+        }}
+      >
+        {/* Icon */}
+        <Box
           sx={{
-            fontSize: 32,
-            mb: 1,
-          }}
-        />
+            width: 48,
+            height: 48,
+            borderRadius: "14px",
 
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+
+            backgroundColor: "#F2E7C9",
+
+            border: "1px solid #E0C978",
+
+            mb: 2,
+          }}
+        >
+          <TrendingUpIcon
+            sx={{
+              fontSize: 28,
+              color: "#B58A16",
+            }}
+          />
+        </Box>
+
+        {/* Title */}
         <Typography
-          color="text.secondary"
           sx={{
             fontWeight: 600,
+            color: "#6B6252",
+            fontSize: "14px",
           }}
         >
           {title}
         </Typography>
 
+        {/* Value */}
         <Typography
           variant="h4"
           sx={{
             mt: 1,
-            fontWeight: "bold",
+
+            fontWeight: 800,
+
+            color: "#30291B",
+
+            letterSpacing: "-0.5px",
           }}
         >
           {value}
         </Typography>
 
+        {/* Updated */}
         <Typography
           variant="body2"
-          color="success.main"
           sx={{
-            mt: 1,
+            mt: 1.5,
+
+            color: "#9A7412",
+
+            fontWeight: 600,
           }}
         >
           ↑ Updated recently
