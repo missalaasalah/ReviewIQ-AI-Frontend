@@ -105,8 +105,8 @@ export default function DashboardLayout() {
         display: "flex",
         flexDirection: "column",
         background:
-          "linear-gradient(180deg, #172033 0%, #1E293B 55%, #24344D 100%)",
-        color: "#fff",
+          "linear-gradient(180deg, #171717 0%, #202020 55%, #292929 100%)",
+        color: "#FFFFFF",
       }}
     >
       {/* Brand */}
@@ -123,51 +123,47 @@ export default function DashboardLayout() {
             gap: 1.5,
           }}
         >
+          {/* ReviewIQ Logo */}
           <Box
             sx={{
-              width: 42,
-              height: 42,
-              borderRadius: 2,
+              width: 44,
+              height: 44,
+              borderRadius: "14px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               background:
-                "linear-gradient(135deg, #1976D2 0%, #42A5F5 100%)",
-              boxShadow: "0 8px 20px rgba(25, 118, 210, 0.35)",
+                "linear-gradient(135deg, #C9A227 0%, #E5C87B 100%)",
+              boxShadow: "0 8px 24px rgba(201, 162, 39, 0.28)",
             }}
           >
             <AutoGraphIcon
               sx={{
-                color: "#fff",
-                fontSize: 25,
+                color: "#171717",
+                fontSize: 26,
               }}
             />
           </Box>
 
-          <Box>
-            <Typography
+          <Typography
+            sx={{
+              fontSize: 21,
+              fontWeight: 800,
+              lineHeight: 1.1,
+              letterSpacing: "-0.5px",
+              color: "#FFFDF8",
+            }}
+          >
+            Review
+            <Box
+              component="span"
               sx={{
-                fontSize: 19,
-                fontWeight: 800,
-                lineHeight: 1.1,
-                letterSpacing: "-0.3px",
+                color: "#D5B34A",
               }}
             >
-              ReviewIQ
-            </Typography>
-
-            <Typography
-              sx={{
-                fontSize: 11,
-                color: "#94A3B8",
-                fontWeight: 600,
-                mt: 0.3,
-                letterSpacing: 1,
-              }}
-            >
-              AI INSIGHTS
-            </Typography>
-          </Box>
+              IQ
+            </Box>
+          </Typography>
         </Box>
       </Box>
 
@@ -191,7 +187,7 @@ export default function DashboardLayout() {
             mb: 1,
             fontSize: 11,
             fontWeight: 700,
-            color: "#64748B",
+            color: "#9A9282",
             letterSpacing: 1.2,
             textTransform: "uppercase",
           }}
@@ -221,40 +217,40 @@ export default function DashboardLayout() {
                 minHeight: 48,
                 borderRadius: 2.5,
                 px: 1.5,
-                color: "#CBD5E1",
+                color: "#C9C3B6",
                 transition: "all 0.2s ease",
 
                 "& .MuiListItemIcon-root": {
                   minWidth: 40,
-                  color: "#94A3B8",
-                  transition: "color 0.2s ease",
+                  color: "#918B7D",
+                  transition: "all 0.2s ease",
                 },
 
                 "& .MuiListItemText-primary": {
                   fontSize: 14,
                   fontWeight: 500,
-                  transition: "color 0.2s ease",
+                  transition: "all 0.2s ease",
                 },
 
                 "&:hover": {
-                  backgroundColor: "rgba(255,255,255,0.07)",
-                  color: "#fff",
+                  backgroundColor: "rgba(201,162,39,0.10)",
+                  color: "#FFFDF8",
                   transform: "translateX(3px)",
 
                   "& .MuiListItemIcon-root": {
-                    color: "#60A5FA",
+                    color: "#D5B34A",
                   },
                 },
 
                 "&.active": {
                   background:
-                    "linear-gradient(90deg, rgba(37,99,235,0.95), rgba(25,118,210,0.75))",
-                  color: "#fff",
+                    "linear-gradient(90deg, rgba(201,162,39,0.96), rgba(229,200,123,0.78))",
+                  color: "#171717",
                   boxShadow:
-                    "0 8px 20px rgba(25,118,210,0.25)",
+                    "0 8px 22px rgba(201,162,39,0.20)",
 
                   "& .MuiListItemIcon-root": {
-                    color: "#fff",
+                    color: "#171717",
                   },
 
                   "& .MuiListItemText-primary": {
@@ -263,7 +259,7 @@ export default function DashboardLayout() {
 
                   "&:hover": {
                     background:
-                      "linear-gradient(90deg, rgba(37,99,235,1), rgba(25,118,210,0.85))",
+                      "linear-gradient(90deg, #C9A227, #E5C87B)",
                   },
                 },
               }}
@@ -288,14 +284,16 @@ export default function DashboardLayout() {
           sx={{
             p: 1.5,
             borderRadius: 2.5,
-            backgroundColor: "rgba(255,255,255,0.05)",
+            background:
+              "linear-gradient(135deg, rgba(201,162,39,0.10), rgba(255,255,255,0.03))",
+            border: "1px solid rgba(201,162,39,0.14)",
           }}
         >
           <Typography
             sx={{
               fontSize: 12,
               fontWeight: 700,
-              color: "#E2E8F0",
+              color: "#E5C87B",
             }}
           >
             Review Intelligence
@@ -304,7 +302,7 @@ export default function DashboardLayout() {
           <Typography
             sx={{
               fontSize: 11,
-              color: "#64748B",
+              color: "#918B7D",
               mt: 0.5,
             }}
           >
@@ -320,7 +318,7 @@ export default function DashboardLayout() {
       sx={{
         display: "flex",
         minHeight: "100vh",
-        backgroundColor: "#F5F7FB",
+        backgroundColor: "#F5EFE0",
       }}
     >
       {/* Mobile Menu Button */}
@@ -334,12 +332,14 @@ export default function DashboardLayout() {
             zIndex: 1400,
             width: 42,
             height: 42,
-            color: "#fff",
-            backgroundColor: "#1E293B",
+            color: "#171717",
+            background:
+              "linear-gradient(135deg, #C9A227, #E5C87B)",
             boxShadow: 3,
 
             "&:hover": {
-              backgroundColor: "#334155",
+              background:
+                "linear-gradient(135deg, #B89420, #D9B968)",
             },
           }}
         >
@@ -371,7 +371,8 @@ export default function DashboardLayout() {
               width: drawerWidth,
               boxSizing: "border-box",
               border: "none",
-              boxShadow: "4px 0 20px rgba(15,23,42,0.08)",
+              boxShadow:
+                "4px 0 24px rgba(23,23,23,0.14)",
             },
           }}
         >
@@ -393,10 +394,11 @@ export default function DashboardLayout() {
           position="sticky"
           elevation={0}
           sx={{
-            backgroundColor: "rgba(255,255,255,0.96)",
-            backdropFilter: "blur(10px)",
-            borderBottom: "1px solid #E2E8F0",
-            color: "#0F172A",
+            backgroundColor: "rgba(255,253,248,0.94)",
+            backdropFilter: "blur(12px)",
+            borderBottom:
+              "1px solid rgba(201,162,39,0.18)",
+            color: "#242424",
           }}
         >
           <Toolbar
@@ -425,7 +427,7 @@ export default function DashboardLayout() {
                     sm: 17,
                   },
                   fontWeight: 700,
-                  color: "#0F172A",
+                  color: "#242424",
                 }}
               >
                 Customer Review Intelligence
@@ -434,7 +436,7 @@ export default function DashboardLayout() {
               <Typography
                 sx={{
                   fontSize: 12,
-                  color: "#64748B",
+                  color: "#786F60",
                   mt: 0.3,
                   display: {
                     xs: "none",
@@ -453,17 +455,17 @@ export default function DashboardLayout() {
                 sx={{
                   px: 1,
                   borderRadius: 2.5,
-                  color: "#334155",
+                  color: "#403B33",
 
                   "&:hover": {
-                    backgroundColor: "#F1F5F9",
+                    backgroundColor: "rgba(201,162,39,0.10)",
                   },
                 }}
               >
                 <AccountCircleIcon
                   sx={{
                     fontSize: 32,
-                    color: "#64748B",
+                    color: "#B28D1E",
                   }}
                 />
 
@@ -482,6 +484,7 @@ export default function DashboardLayout() {
                       fontSize: 13,
                       fontWeight: 700,
                       lineHeight: 1.2,
+                      color: "#242424",
                     }}
                   >
                     Admin
@@ -490,7 +493,7 @@ export default function DashboardLayout() {
                   <Typography
                     sx={{
                       fontSize: 11,
-                      color: "#94A3B8",
+                      color: "#786F60",
                       lineHeight: 1.2,
                     }}
                   >
@@ -510,7 +513,9 @@ export default function DashboardLayout() {
                       mt: 1,
                       minWidth: 170,
                       borderRadius: 2.5,
-                      border: "1px solid #E2E8F0",
+                      border:
+                        "1px solid rgba(201,162,39,0.20)",
+                      backgroundColor: "#FFFDF8",
                     },
                   },
                 }}
@@ -548,7 +553,7 @@ export default function DashboardLayout() {
                     py: 1.2,
                     borderRadius: 1,
                     mx: 0.5,
-                    color: "#DC2626",
+                    color: "#B94A48",
                   }}
                 >
                   Logout
@@ -568,7 +573,7 @@ export default function DashboardLayout() {
               sm: 3,
               md: 4,
             },
-            backgroundColor: "#F5F7FB",
+            backgroundColor: "#F5EFE0",
           }}
         >
           <Outlet />
