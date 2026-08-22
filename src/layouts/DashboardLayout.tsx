@@ -1,5 +1,5 @@
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import {
   AppBar,
@@ -29,90 +29,14 @@ import ShowChartIcon from "@mui/icons-material/ShowChart";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import LanguageIcon from "@mui/icons-material/Language";
+import PersonIcon from "@mui/icons-material/Person";
+
+import { useLanguage } from "../i18n/LanguageContext";
 
 const drawerWidth = 270;
 
-type Language = "en" | "ar";
-
-const translations = {
-  en: {
-    workspace: "Workspace",
-
-    dashboard: "Dashboard",
-    upload: "Upload Reviews",
-    aspects: "Aspect Analysis",
-    branches: "Branches",
-    trends: "Trend Analysis",
-    recommendations: "Recommendations",
-    settings: "Settings",
-
-    projectName: "Smart Customer",
-    projectName2: "Feedback Analytics",
-
-    intelligence: "Smart Feedback Intelligence",
-    intelligenceText:
-      "Turn customer feedback into actionable insights.",
-
-    headerTitle: "Smart Customer Feedback Analytics",
-    headerSubtitle:
-      "Analyze feedback. Discover insights. Improve performance.",
-
-    admin: "Admin",
-    administrator: "Administrator",
-
-    profile: "Profile",
-    logout: "Logout",
-
-    language: "العربية",
-  },
-
-  ar: {
-    workspace: "مساحة العمل",
-
-    dashboard: "لوحة التحكم",
-    upload: "رفع التقييمات",
-    aspects: "تحليل الجوانب",
-    branches: "الفروع",
-    trends: "تحليل الاتجاهات",
-    recommendations: "التوصيات",
-    settings: "الإعدادات",
-
-    projectName: "تحليلات",
-    projectName2: "ملاحظات العملاء الذكية",
-
-    intelligence: "ذكاء ملاحظات العملاء",
-    intelligenceText:
-      "حوّل ملاحظات العملاء إلى رؤى قابلة للتنفيذ.",
-
-    headerTitle: "تحليلات ملاحظات العملاء الذكية",
-    headerSubtitle:
-      "حلّل آراء العملاء. اكتشف الرؤى. حسّن الأداء.",
-
-    admin: "المسؤول",
-    administrator: "مدير النظام",
-
-    profile: "الملف الشخصي",
-    logout: "تسجيل الخروج",
-
-    language: "English",
-  },
-};
-
 export default function DashboardLayout() {
-  const [anchorEl, setAnchorEl] =
-    useState<null | HTMLElement>(null);
-
-  const [mobileOpen, setMobileOpen] =
-    useState(false);
-
-  const [language, setLanguage] =
-    useState<Language>(() => {
-      const savedLanguage =
-        localStorage.getItem("reviewiq-language");
-
-      return savedLanguage === "ar" ? "ar" : "en";
-    });
-
   const navigate = useNavigate();
 
   const theme = useTheme();
@@ -121,144 +45,204 @@ export default function DashboardLayout() {
     theme.breakpoints.down("md")
   );
 
-  const open = Boolean(anchorEl);
+  /*
+   * ============================================================
+   * LANGUAGE
+   * ============================================================
+   */
 
-  const t = translations[language];
+  const {
+    language,
+    toggleLanguage,
+  } = useLanguage();
 
   const isArabic = language === "ar";
 
   /*
-  =========================================================
-  LANGUAGE SWITCH
-  =========================================================
-  */
+   * ============================================================
+   * STATES
+   * ============================================================
+   */
 
-  const handleLanguageChange = () => {
-    const newLanguage: Language =
-      language === "en" ? "ar" : "en";
+  const [anchorEl, setAnchorEl] =
+    useState<null | HTMLElement>(null);
 
-    setLanguage(newLanguage);
+  const [mobileOpen, setMobileOpen] =
+    useState(false);
 
-    localStorage.setItem(
-      "reviewiq-language",
-      newLanguage
-    );
-
-    document.documentElement.lang = newLanguage;
-
-    document.documentElement.dir =
-      newLanguage === "ar" ? "rtl" : "ltr";
-
-    document.body.dir =
-      newLanguage === "ar" ? "rtl" : "ltr";
-
-    /*
-      Notify the rest of the application.
-      Other pages can listen for this event later.
-    */
-    window.dispatchEvent(
-      new CustomEvent("reviewiq-language-change", {
-        detail: newLanguage,
-      })
-    );
-  };
+  const menuOpen = Boolean(anchorEl);
 
   /*
-  =========================================================
-  INITIAL LANGUAGE
-  =========================================================
-  */
+   * ============================================================
+   * LANGUAGE TEXT
+   * ============================================================
+   */
 
-  useEffect(() => {
-    document.documentElement.lang = language;
+  const text = isArabic
+    ? {
+        brandTitle: "تحليلات ملاحظات العملاء الذكية",
+        brandShort: "تحليلات",
+        workspace: "مساحة العمل",
 
-    document.documentElement.dir =
-      language === "ar" ? "rtl" : "ltr";
+        dashboard: "لوحة التحكم",
+        upload: "رفع التقييمات",
+        aspects: "تحليل الجوانب",
+        branches: "الفروع",
+        trends: "تحليل الاتجاهات",
+        recommendations: "التوصيات",
+        settings: "الإعدادات",
 
-    document.body.dir =
-      language === "ar" ? "rtl" : "ltr";
-  }, [language]);
+        profile: "الملف الشخصي",
+        admin: "المسؤول",
+        administrator: "مدير النظام",
+
+        english: "English",
+        arabic: "العربية",
+
+        switchToEnglish: "English",
+        switchToArabic: "العربية",
+
+        intelligenceTitle:
+          "ذكاء ملاحظات العملاء",
+
+        intelligenceDescription:
+          "حوّل ملاحظات العملاء إلى رؤى قابلة للتنفيذ.",
+
+        headerTitle:
+          "تحليلات ملاحظات العملاء الذكية",
+
+        headerSubtitle:
+          "حلّل آراء العملاء، اكتشف الرؤى، حسّن الأداء.",
+
+        logout: "تسجيل الخروج",
+
+        profileSettings: "إعدادات الحساب",
+      }
+    : {
+        brandTitle:
+          "Smart Customer Feedback Analytics",
+
+        brandShort: "Analytics",
+
+        workspace: "WORKSPACE",
+
+        dashboard: "Dashboard",
+        upload: "Upload Reviews",
+        aspects: "Aspect Analysis",
+        branches: "Branches",
+        trends: "Trend Analysis",
+        recommendations: "Recommendations",
+        settings: "Settings",
+
+        profile: "Profile",
+        admin: "Admin",
+        administrator: "Administrator",
+
+        english: "English",
+        arabic: "العربية",
+
+        switchToEnglish: "English",
+        switchToArabic: "العربية",
+
+        intelligenceTitle:
+          "Smart Feedback Intelligence",
+
+        intelligenceDescription:
+          "Turn customer feedback into actionable insights.",
+
+        headerTitle:
+          "Smart Customer Feedback Analytics",
+
+        headerSubtitle:
+          "Analyze feedback. Discover insights. Improve performance.",
+
+        logout: "Logout",
+
+        profileSettings: "Account Settings",
+      };
 
   /*
-  =========================================================
-  ADMIN MENU
-  =========================================================
-  */
-
-  const handleClick = (
-    event: React.MouseEvent<HTMLElement>
-  ) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleNavigation = (path: string) => {
-    navigate(path);
-    handleClose();
-  };
-
-  /*
-  =========================================================
-  MOBILE DRAWER
-  =========================================================
-  */
-
-  const handleDrawerToggle = () => {
-    setMobileOpen((previous) => !previous);
-  };
-
-  /*
-  =========================================================
-  NAVIGATION ITEMS
-  =========================================================
-  */
+   * ============================================================
+   * NAVIGATION
+   * ============================================================
+   */
 
   const navigationItems = [
     {
-      label: t.dashboard,
+      label: text.dashboard,
       path: "/",
       icon: <DashboardIcon />,
     },
     {
-      label: t.upload,
+      label: text.upload,
       path: "/upload",
       icon: <UploadFileIcon />,
     },
     {
-      label: t.aspects,
+      label: text.aspects,
       path: "/aspects",
       icon: <AnalyticsIcon />,
     },
     {
-      label: t.branches,
+      label: text.branches,
       path: "/branches",
       icon: <BusinessIcon />,
     },
     {
-      label: t.trends,
+      label: text.trends,
       path: "/trends",
       icon: <ShowChartIcon />,
     },
     {
-      label: t.recommendations,
+      label: text.recommendations,
       path: "/recommendations",
       icon: <LightbulbIcon />,
     },
     {
-      label: t.settings,
+      label: text.settings,
       path: "/settings",
       icon: <SettingsIcon />,
     },
   ];
 
   /*
-  =========================================================
-  DRAWER CONTENT
-  =========================================================
-  */
+   * ============================================================
+   * ADMIN MENU
+   * ============================================================
+   */
+
+  const handleAdminClick = (
+    event: React.MouseEvent<HTMLElement>
+  ) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleAdminClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    handleAdminClose();
+  };
+
+  /*
+   * ============================================================
+   * MOBILE DRAWER
+   * ============================================================
+   */
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(
+      (previous) => !previous
+    );
+  };
+
+  /*
+   * ============================================================
+   * DRAWER
+   * ============================================================
+   */
 
   const drawerContent = (
     <Box
@@ -267,6 +251,7 @@ export default function DashboardLayout() {
         height: "100%",
 
         display: "flex",
+
         flexDirection: "column",
 
         background:
@@ -275,9 +260,9 @@ export default function DashboardLayout() {
         color: "#FFFFFF",
       }}
     >
-      {/* =====================================================
+      {/* ======================================================
           BRAND
-      ===================================================== */}
+      ====================================================== */}
 
       <Box
         sx={{
@@ -288,8 +273,12 @@ export default function DashboardLayout() {
         <Box
           sx={{
             display: "flex",
+
             alignItems: "center",
+
             gap: 1.5,
+
+            flexDirection: "row",
           }}
         >
           {/* LOGO */}
@@ -304,7 +293,9 @@ export default function DashboardLayout() {
               overflow: "hidden",
 
               display: "flex",
+
               alignItems: "center",
+
               justifyContent: "center",
 
               backgroundColor: "#FFFFFF",
@@ -321,7 +312,7 @@ export default function DashboardLayout() {
             <Box
               component="img"
               src="/logo.png"
-              alt="Smart Customer Feedback Analytics"
+              alt={text.brandTitle}
               sx={{
                 width: "100%",
                 height: "100%",
@@ -333,30 +324,37 @@ export default function DashboardLayout() {
             />
           </Box>
 
-          {/* PROJECT NAME */}
+          {/* BRAND NAME */}
 
           <Box
             sx={{
               minWidth: 0,
-              textAlign: isArabic
-                ? "right"
-                : "left",
+
+              textAlign:
+                isArabic
+                  ? "right"
+                  : "left",
             }}
           >
             <Typography
               sx={{
-                fontSize: 15,
+                fontSize: 14,
 
                 fontWeight: 800,
 
-                lineHeight: 1.2,
+                lineHeight: 1.3,
 
                 color: "#F1CD68",
 
-                letterSpacing: "-0.2px",
+                letterSpacing:
+                  isArabic
+                    ? 0
+                    : "-0.2px",
               }}
             >
-              {t.projectName}
+              {isArabic
+                ? "تحليلات"
+                : "Smart Customer"}
             </Typography>
 
             <Typography
@@ -372,7 +370,9 @@ export default function DashboardLayout() {
                 mt: 0.3,
               }}
             >
-              {t.projectName2}
+              {isArabic
+                ? "ملاحظات العملاء الذكية"
+                : "Feedback Analytics"}
             </Typography>
           </Box>
         </Box>
@@ -385,9 +385,9 @@ export default function DashboardLayout() {
         }}
       />
 
-      {/* =====================================================
-          NAVIGATION
-      ===================================================== */}
+      {/* ======================================================
+          WORKSPACE
+      ====================================================== */}
 
       <Box
         sx={{
@@ -395,6 +395,8 @@ export default function DashboardLayout() {
           py: 2,
 
           flex: 1,
+
+          overflowY: "auto",
         }}
       >
         <Typography
@@ -409,16 +411,23 @@ export default function DashboardLayout() {
 
             color: "#A99B76",
 
-            letterSpacing: 1.2,
+            letterSpacing:
+              isArabic
+                ? 0
+                : 1.2,
 
-            textTransform: "uppercase",
+            textTransform:
+              isArabic
+                ? "none"
+                : "uppercase",
 
-            textAlign: isArabic
-              ? "right"
-              : "left",
+            textAlign:
+              isArabic
+                ? "right"
+                : "left",
           }}
         >
-          {t.workspace}
+          {text.workspace}
         </Typography>
 
         <List
@@ -431,112 +440,130 @@ export default function DashboardLayout() {
             gap: 0.7,
           }}
         >
-          {navigationItems.map((item) => (
-            <ListItemButton
-              key={item.path}
-              component={NavLink}
-              to={item.path}
-              onClick={() => {
-                if (isMobile) {
-                  setMobileOpen(false);
-                }
-              }}
-              sx={{
-                minHeight: 49,
+          {navigationItems.map(
+            (item) => (
+              <ListItemButton
+                key={item.path}
+                component={NavLink}
+                to={item.path}
+                onClick={() => {
+                  if (isMobile) {
+                    setMobileOpen(false);
+                  }
+                }}
+                sx={{
+                  minHeight: 49,
 
-                borderRadius: 2.5,
+                  borderRadius: 2.5,
 
-                px: 1.5,
+                  px: 1.5,
 
-                color: "#D3CBB8",
+                  color: "#D3CBB8",
 
-                transition:
-                  "all 0.2s ease",
-
-                "& .MuiListItemIcon-root": {
-                  minWidth: 40,
-
-                  color: "#A99C7A",
-
-                  transition:
-                    "all 0.2s ease",
-                },
-
-                "& .MuiListItemText-primary": {
-                  fontSize: 14,
-
-                  fontWeight: 500,
+                  justifyContent:
+                    "flex-start",
 
                   transition:
                     "all 0.2s ease",
 
-                  textAlign: isArabic
-                    ? "right"
-                    : "left",
-                },
+                  "& .MuiListItemIcon-root":
+                    {
+                      minWidth: 40,
 
-                /* HOVER */
+                      color: "#A99C7A",
 
-                "&:hover": {
-                  backgroundColor:
-                    "rgba(218,174,58,0.10)",
+                      transition:
+                        "all 0.2s ease",
 
-                  color: "#FFF9E8",
+                      justifyContent:
+                        "center",
+                    },
 
-                  transform:
-                    "translateX(3px)",
+                  "& .MuiListItemText-primary":
+                    {
+                      fontSize: 14,
 
-                  "& .MuiListItemIcon-root": {
-                    color: "#E5C76B",
-                  },
-                },
+                      fontWeight: 500,
 
-                /* ACTIVE */
+                      transition:
+                        "all 0.2s ease",
 
-                "&.active": {
-                  background:
-                    "linear-gradient(90deg, #C9A227 0%, #E5C76B 100%)",
+                      textAlign:
+                        isArabic
+                          ? "right"
+                          : "left",
+                    },
 
-                  color: "#17130B",
+                  "&:hover":
+                    {
+                      backgroundColor:
+                        "rgba(218,174,58,0.10)",
 
-                  boxShadow:
-                    "0 8px 24px rgba(201,162,39,0.25)",
+                      color: "#FFF9E8",
 
-                  "& .MuiListItemIcon-root": {
-                    color: "#17130B",
-                  },
+                      transform:
+                        isArabic
+                          ? "translateX(-3px)"
+                          : "translateX(3px)",
 
-                  "& .MuiListItemText-primary": {
-                    fontWeight: 800,
-                  },
+                      "& .MuiListItemIcon-root":
+                        {
+                          color:
+                            "#E5C76B",
+                        },
+                    },
 
-                  "&:hover": {
-                    background:
-                      "linear-gradient(90deg, #B88E19 0%, #E5C76B 100%)",
-                  },
-                },
-              }}
-            >
-              <ListItemIcon>
-                {item.icon}
-              </ListItemIcon>
+                  "&.active":
+                    {
+                      background:
+                        "linear-gradient(90deg, #C9A227 0%, #E5C76B 100%)",
 
-              <ListItemText
-                primary={item.label}
-              />
-            </ListItemButton>
-          ))}
+                      color: "#17130B",
+
+                      boxShadow:
+                        "0 8px 24px rgba(201,162,39,0.25)",
+
+                      "& .MuiListItemIcon-root":
+                        {
+                          color:
+                            "#17130B",
+                        },
+
+                      "& .MuiListItemText-primary":
+                        {
+                          fontWeight: 800,
+                        },
+
+                      "&:hover":
+                        {
+                          background:
+                            "linear-gradient(90deg, #B88E19 0%, #E5C76B 100%)",
+                        },
+                    },
+                }}
+              >
+                <ListItemIcon>
+                  {item.icon}
+                </ListItemIcon>
+
+                <ListItemText
+                  primary={
+                    item.label
+                  }
+                />
+              </ListItemButton>
+            )
+          )}
         </List>
       </Box>
 
-      {/* =====================================================
-          SIDEBAR FOOTER
-      ===================================================== */}
+      {/* ======================================================
+          FOOTER
+      ====================================================== */}
 
       <Box
         sx={{
           px: 2,
-
           py: 2,
 
           borderTop:
@@ -554,6 +581,11 @@ export default function DashboardLayout() {
 
             border:
               "1px solid rgba(218,174,58,0.16)",
+
+            textAlign:
+              isArabic
+                ? "right"
+                : "left",
           }}
         >
           <Typography
@@ -563,13 +595,9 @@ export default function DashboardLayout() {
               fontWeight: 800,
 
               color: "#E5C76B",
-
-              textAlign: isArabic
-                ? "right"
-                : "left",
             }}
           >
-            {t.intelligence}
+            {text.intelligenceTitle}
           </Typography>
 
           <Typography
@@ -581,13 +609,9 @@ export default function DashboardLayout() {
               mt: 0.5,
 
               lineHeight: 1.5,
-
-              textAlign: isArabic
-                ? "right"
-                : "left",
             }}
           >
-            {t.intelligenceText}
+            {text.intelligenceDescription}
           </Typography>
         </Box>
       </Box>
@@ -595,10 +619,10 @@ export default function DashboardLayout() {
   );
 
   /*
-  =========================================================
-  RETURN
-  =========================================================
-  */
+   * ============================================================
+   * RETURN
+   * ============================================================
+   */
 
   return (
     <Box
@@ -608,27 +632,37 @@ export default function DashboardLayout() {
 
         minHeight: "100vh",
 
+        direction:
+          isArabic
+            ? "rtl"
+            : "ltr",
+
         background:
           "linear-gradient(135deg, #F8F3E7 0%, #F5EBD2 100%)",
       }}
     >
-      {/* =====================================================
+      {/* ======================================================
           MOBILE MENU BUTTON
-      ===================================================== */}
+      ====================================================== */}
 
       {isMobile && (
         <IconButton
-          onClick={handleDrawerToggle}
+          onClick={
+            handleDrawerToggle
+          }
+          aria-label={
+            isArabic
+              ? "فتح القائمة"
+              : "Open menu"
+          }
           sx={{
             position: "fixed",
 
             top: 12,
 
-            /*
-              Keep the menu button on the correct side
-            */
-
-            [isArabic ? "right" : "left"]: 12,
+            [isArabic
+              ? "right"
+              : "left"]: 12,
 
             zIndex: 1400,
 
@@ -644,19 +678,20 @@ export default function DashboardLayout() {
             boxShadow:
               "0 6px 18px rgba(201,162,39,0.30)",
 
-            "&:hover": {
-              background:
-                "linear-gradient(135deg, #B88E19, #D9B85E)",
-            },
+            "&:hover":
+              {
+                background:
+                  "linear-gradient(135deg, #B88E19, #D9B85E)",
+              },
           }}
         >
           <MenuIcon />
         </IconButton>
       )}
 
-      {/* =====================================================
+      {/* ======================================================
           SIDEBAR
-      ===================================================== */}
+      ====================================================== */}
 
       <Box
         component="nav"
@@ -676,35 +711,47 @@ export default function DashboardLayout() {
               ? "temporary"
               : "permanent"
           }
+          anchor={
+            isArabic
+              ? "right"
+              : "left"
+          }
           open={
             isMobile
               ? mobileOpen
               : true
           }
-          onClose={handleDrawerToggle}
+          onClose={
+            handleDrawerToggle
+          }
           ModalProps={{
             keepMounted: true,
           }}
           sx={{
-            "& .MuiDrawer-paper": {
-              width: drawerWidth,
+            "& .MuiDrawer-paper":
+              {
+                width:
+                  drawerWidth,
 
-              boxSizing: "border-box",
+                boxSizing:
+                  "border-box",
 
-              border: "none",
+                border: "none",
 
-              boxShadow:
-                "5px 0 28px rgba(35,29,14,0.18)",
-            },
+                boxShadow:
+                  isArabic
+                    ? "-5px 0 28px rgba(35,29,14,0.18)"
+                    : "5px 0 28px rgba(35,29,14,0.18)",
+              },
           }}
         >
           {drawerContent}
         </Drawer>
       </Box>
 
-      {/* =====================================================
-          MAIN AREA
-      ===================================================== */}
+      {/* ======================================================
+          MAIN
+      ====================================================== */}
 
       <Box
         sx={{
@@ -714,19 +761,20 @@ export default function DashboardLayout() {
 
           display: "flex",
 
-          flexDirection: "column",
+          flexDirection:
+            "column",
         }}
       >
-        {/* ===================================================
+        {/* ====================================================
             HEADER
-        =================================================== */}
+        ==================================================== */}
 
         <AppBar
           position="sticky"
           elevation={0}
           sx={{
             backgroundColor:
-              "rgba(255,252,245,0.94)",
+              "rgba(255,252,245,0.96)",
 
             backdropFilter:
               "blur(12px)",
@@ -735,6 +783,8 @@ export default function DashboardLayout() {
               "1px solid rgba(201,162,39,0.18)",
 
             color: "#242018",
+
+            zIndex: 1200,
           }}
         >
           <Toolbar
@@ -748,44 +798,52 @@ export default function DashboardLayout() {
                 md: 4,
               },
 
-              gap: 2,
+              gap: 1.5,
+
+              flexDirection:
+                "row",
             }}
           >
-            {/* HEADER TITLE */}
+            {/* =================================================
+                HEADER TITLE
+            ================================================= */}
 
             <Box
               sx={{
                 flexGrow: 1,
 
-                /*
-                  Space for mobile menu
-                */
+                minWidth: 0,
 
-                [isArabic
-                  ? "mr"
-                  : "ml"]: {
-                  xs: 6,
-                  md: 0,
-                },
+                textAlign:
+                  isArabic
+                    ? "right"
+                    : "left",
 
-                textAlign: isArabic
-                  ? "right"
-                  : "left",
+                ml:
+                  isMobile
+                    ? 6
+                    : 0,
               }}
             >
               <Typography
                 sx={{
                   fontSize: {
-                    xs: 15,
+                    xs: 14,
                     sm: 17,
                   },
 
                   fontWeight: 800,
 
                   color: "#302A1C",
+
+                  whiteSpace:
+                    {
+                      xs: "normal",
+                      sm: "nowrap",
+                    },
                 }}
               >
-                {t.headerTitle}
+                {text.headerTitle}
               </Typography>
 
               <Typography
@@ -802,154 +860,298 @@ export default function DashboardLayout() {
                   },
                 }}
               >
-                {t.headerSubtitle}
+                {text.headerSubtitle}
               </Typography>
             </Box>
 
             {/* =================================================
-                LANGUAGE BUTTON
+                HEADER ACTIONS
             ================================================= */}
 
-            <Button
-              onClick={handleLanguageChange}
-              variant="outlined"
-              size="small"
+            <Box
               sx={{
-                minWidth: 82,
+                display: "flex",
 
-                height: 38,
+                alignItems:
+                  "center",
 
-                borderRadius: 2.5,
+                gap: 1,
 
-                border:
-                  "1px solid rgba(201,162,39,0.45)",
-
-                color: "#8B6D16",
-
-                backgroundColor:
-                  "rgba(201,162,39,0.05)",
-
-                fontSize: 12,
-
-                fontWeight: 800,
-
-                textTransform: "none",
-
-                "&:hover": {
-                  borderColor:
-                    "#C9A227",
-
-                  backgroundColor:
-                    "rgba(201,162,39,0.12)",
-                },
+                flexShrink: 0,
               }}
             >
-              {t.language}
-            </Button>
+              {/* LANGUAGE BUTTON */}
 
-            {/* =================================================
-                ADMIN
-            ================================================= */}
-
-            <Box>
-              <IconButton
-                onClick={handleClick}
+              <Button
+                onClick={
+                  toggleLanguage
+                }
+                variant="outlined"
+                startIcon={
+                  <LanguageIcon
+                    sx={{
+                      fontSize:
+                        20,
+                    }}
+                  />
+                }
                 sx={{
-                  px: 1,
+                  minWidth:
+                    {
+                      xs: 42,
+                      sm: 105,
+                    },
+
+                  height: 40,
+
+                  px: {
+                    xs: 1,
+                    sm: 1.5,
+                  },
 
                   borderRadius: 2.5,
 
-                  color: "#403A2C",
+                  borderColor:
+                    "rgba(201,162,39,0.45)",
 
-                  "&:hover": {
-                    backgroundColor:
-                      "rgba(201,162,39,0.10)",
-                  },
+                  color:
+                    "#806515",
+
+                  backgroundColor:
+                    "rgba(201,162,39,0.06)",
+
+                  fontWeight: 800,
+
+                  "&:hover":
+                    {
+                      borderColor:
+                        "#C9A227",
+
+                      backgroundColor:
+                        "rgba(201,162,39,0.14)",
+                    },
+
+                  "& .MuiButton-startIcon":
+                    {
+                      margin:
+                        0,
+                    },
+                }}
+              >
+                <Box
+                  component="span"
+                  sx={{
+                    display: {
+                      xs: "none",
+                      sm: "inline",
+                    },
+                  }}
+                >
+                  {isArabic
+                    ? "English"
+                    : "العربية"}
+                </Box>
+              </Button>
+
+              {/* SETTINGS BUTTON */}
+
+              <IconButton
+                onClick={() =>
+                  navigate(
+                    "/settings"
+                  )
+                }
+                aria-label={
+                  text.settings
+                }
+                sx={{
+                  width: 42,
+
+                  height: 42,
+
+                  borderRadius: 2.5,
+
+                  color:
+                    "#806515",
+
+                  backgroundColor:
+                    "rgba(201,162,39,0.07)",
+
+                  border:
+                    "1px solid rgba(201,162,39,0.18)",
+
+                  "&:hover":
+                    {
+                      backgroundColor:
+                        "rgba(201,162,39,0.15)",
+                    },
+                }}
+              >
+                <SettingsIcon />
+              </IconButton>
+
+              {/* PROFILE BUTTON */}
+
+              <IconButton
+                onClick={
+                  handleAdminClick
+                }
+                aria-label={
+                  text.profile
+                }
+                sx={{
+                  width: 42,
+
+                  height: 42,
+
+                  borderRadius: 2.5,
+
+                  color:
+                    "#403A2C",
+
+                  backgroundColor:
+                    "rgba(201,162,39,0.07)",
+
+                  border:
+                    "1px solid rgba(201,162,39,0.18)",
+
+                  "&:hover":
+                    {
+                      backgroundColor:
+                        "rgba(201,162,39,0.15)",
+                    },
                 }}
               >
                 <AccountCircleIcon
                   sx={{
                     fontSize: 32,
 
-                    color: "#B28D1E",
+                    color:
+                      "#B28D1E",
                   }}
                 />
-
-                <Box
-                  sx={{
-                    ml: isArabic ? 0 : 1,
-
-                    mr: isArabic ? 1 : 0,
-
-                    display: {
-                      xs: "none",
-                      sm: "block",
-                    },
-
-                    textAlign: isArabic
-                      ? "right"
-                      : "left",
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      fontSize: 13,
-
-                      fontWeight: 800,
-
-                      lineHeight: 1.2,
-
-                      color: "#302A1C",
-                    }}
-                  >
-                    {t.admin}
-                  </Typography>
-
-                  <Typography
-                    sx={{
-                      fontSize: 11,
-
-                      color: "#81755D",
-
-                      lineHeight: 1.2,
-                    }}
-                  >
-                    {t.administrator}
-                  </Typography>
-                </Box>
               </IconButton>
 
+              {/* ADMIN TEXT - DESKTOP */}
+
+              <Box
+                onClick={
+                  handleAdminClick
+                }
+                sx={{
+                  display: {
+                    xs: "none",
+                    md: "flex",
+                  },
+
+                  flexDirection:
+                    "column",
+
+                  cursor:
+                    "pointer",
+
+                  textAlign:
+                    isArabic
+                      ? "right"
+                      : "left",
+
+                  minWidth: 70,
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontSize: 13,
+
+                    fontWeight: 800,
+
+                    lineHeight: 1.2,
+
+                    color:
+                      "#302A1C",
+                  }}
+                >
+                  {text.admin}
+                </Typography>
+
+                <Typography
+                  sx={{
+                    fontSize: 11,
+
+                    color:
+                      "#81755D",
+
+                    lineHeight:
+                      1.2,
+                  }}
+                >
+                  {text.administrator}
+                </Typography>
+              </Box>
+
               {/* =================================================
-                  ADMIN MENU
+                  PROFILE MENU
               ================================================= */}
 
               <Menu
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
+                anchorEl={
+                  anchorEl
+                }
+                open={
+                  menuOpen
+                }
+                onClose={
+                  handleAdminClose
+                }
+                anchorOrigin={{
+                  vertical:
+                    "bottom",
+
+                  horizontal:
+                    isArabic
+                      ? "left"
+                      : "right",
+                }}
+                transformOrigin={{
+                  vertical:
+                    "top",
+
+                  horizontal:
+                    isArabic
+                      ? "left"
+                      : "right",
+                }}
                 slotProps={{
-                  paper: {
-                    elevation: 6,
+                  paper:
+                    {
+                      elevation: 6,
 
-                    sx: {
-                      mt: 1,
+                      sx: {
+                        mt: 1,
 
-                      minWidth: 180,
+                        minWidth: 210,
 
-                      borderRadius: 2.5,
+                        borderRadius:
+                          2.5,
 
-                      border:
-                        "1px solid rgba(201,162,39,0.22)",
+                        border:
+                          "1px solid rgba(201,162,39,0.22)",
 
-                      backgroundColor:
-                        "#FFFDF8",
+                        backgroundColor:
+                          "#FFFDF8",
 
-                      boxShadow:
-                        "0 12px 30px rgba(50,40,15,0.14)",
+                        boxShadow:
+                          "0 12px 30px rgba(50,40,15,0.14)",
+
+                        direction:
+                          isArabic
+                            ? "rtl"
+                            : "ltr",
+                      },
                     },
-                  },
                 }}
               >
+                {/* PROFILE */}
+
                 <MenuItem
                   onClick={() =>
                     handleNavigation(
@@ -963,18 +1165,36 @@ export default function DashboardLayout() {
 
                     mx: 0.5,
 
-                    textAlign: isArabic
-                      ? "right"
-                      : "left",
+                    gap: 1,
 
-                    "&:hover": {
-                      backgroundColor:
-                        "rgba(201,162,39,0.10)",
-                    },
+                    "&:hover":
+                      {
+                        backgroundColor:
+                          "rgba(201,162,39,0.10)",
+                      },
                   }}
                 >
-                  {t.profile}
+                  <PersonIcon
+                    sx={{
+                      color:
+                        "#B28D1E",
+                    }}
+                  />
+
+                  <Typography
+                    sx={{
+                      fontSize:
+                        14,
+
+                      fontWeight:
+                        600,
+                    }}
+                  >
+                    {text.profile}
+                  </Typography>
                 </MenuItem>
+
+                {/* SETTINGS */}
 
                 <MenuItem
                   onClick={() =>
@@ -989,17 +1209,33 @@ export default function DashboardLayout() {
 
                     mx: 0.5,
 
-                    textAlign: isArabic
-                      ? "right"
-                      : "left",
+                    gap: 1,
 
-                    "&:hover": {
-                      backgroundColor:
-                        "rgba(201,162,39,0.10)",
-                    },
+                    "&:hover":
+                      {
+                        backgroundColor:
+                          "rgba(201,162,39,0.10)",
+                      },
                   }}
                 >
-                  {t.settings}
+                  <SettingsIcon
+                    sx={{
+                      color:
+                        "#B28D1E",
+                    }}
+                  />
+
+                  <Typography
+                    sx={{
+                      fontSize:
+                        14,
+
+                      fontWeight:
+                        600,
+                    }}
+                  >
+                    {text.settings}
+                  </Typography>
                 </MenuItem>
 
                 <Divider
@@ -1011,9 +1247,11 @@ export default function DashboardLayout() {
                   }}
                 />
 
+                {/* LOGOUT */}
+
                 <MenuItem
                   onClick={() => {
-                    handleClose();
+                    handleAdminClose();
 
                     alert(
                       isArabic
@@ -1028,33 +1266,33 @@ export default function DashboardLayout() {
 
                     mx: 0.5,
 
-                    color: "#B94A48",
+                    color:
+                      "#B94A48",
 
-                    textAlign: isArabic
-                      ? "right"
-                      : "left",
-
-                    "&:hover": {
-                      backgroundColor:
-                        "rgba(185,74,72,0.08)",
-                    },
+                    "&:hover":
+                      {
+                        backgroundColor:
+                          "rgba(185,74,72,0.08)",
+                      },
                   }}
                 >
-                  {t.logout}
+                  {text.logout}
                 </MenuItem>
               </Menu>
             </Box>
           </Toolbar>
         </AppBar>
 
-        {/* ===================================================
+        {/* ====================================================
             PAGE CONTENT
-        =================================================== */}
+        ==================================================== */}
 
         <Box
           component="main"
           sx={{
             flexGrow: 1,
+
+            minWidth: 0,
 
             p: {
               xs: 2,
@@ -1064,6 +1302,11 @@ export default function DashboardLayout() {
 
             background:
               "linear-gradient(135deg, #F8F3E7 0%, #F5EBD2 100%)",
+
+            direction:
+              isArabic
+                ? "rtl"
+                : "ltr",
           }}
         >
           <Outlet />
