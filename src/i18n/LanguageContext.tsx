@@ -1,7 +1,6 @@
 import {
   createContext,
   useContext,
-  useEffect,
   useMemo,
   useState,
 } from "react";
@@ -11,17 +10,16 @@ import type { ReactNode } from "react";
 import { translations } from "./translations";
 import type { Language } from "./translations";
 
-type TranslationKeys = keyof typeof translations.en;
-
 type LanguageContextType = {
   language: Language;
-  direction: "ltr" | "rtl";
-  t: (key: TranslationKeys) => string;
+  direction: "rtl" | "ltr";
+  t: (key: keyof typeof translations.en) => string;
   toggleLanguage: () => void;
 };
 
-const LanguageContext =
-  createContext<LanguageContextType | undefined>(undefined);
+const LanguageContext = createContext<
+  LanguageContextType | undefined
+>(undefined);
 
 type LanguageProviderProps = {
   children: ReactNode;
@@ -33,29 +31,24 @@ export function LanguageProvider({
   const [language, setLanguage] =
     useState<Language>("en");
 
-  const direction: "ltr" | "rtl" =
-    language === "ar" ? "rtl" : "ltr";
-
   const toggleLanguage = () => {
     setLanguage((current: Language) =>
       current === "en" ? "ar" : "en"
     );
   };
 
-  useEffect(() => {
-    document.documentElement.lang = language;
-    document.documentElement.dir = direction;
-  }, [language, direction]);
+  const direction: "rtl" | "ltr" =
+    language === "ar" ? "rtl" : "ltr";
 
-  const t = (key: TranslationKeys): string => {
-    return translations[language][key];
-  };
-
-  const value: LanguageContextType = useMemo(
+  const value = useMemo<LanguageContextType>(
     () => ({
       language,
       direction,
-      t,
+
+      t: (key) => {
+        return translations[language][key] ?? key;
+      },
+
       toggleLanguage,
     }),
     [language, direction]

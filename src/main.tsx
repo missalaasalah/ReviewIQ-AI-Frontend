@@ -16,7 +16,6 @@ createRoot(document.getElementById("root")!).render(
     <LanguageProvider>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-
         <App />
       </ThemeProvider>
     </LanguageProvider>

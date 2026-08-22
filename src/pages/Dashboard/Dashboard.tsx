@@ -10,7 +10,11 @@ export default function Dashboard() {
     <>
       <Typography
         variant="h4"
-        sx={{ mb: 3 }}
+        sx={{
+          mb: 3,
+          fontWeight: 800,
+          color: "#302A1C",
+        }}
       >
         Executive Overview
       </Typography>

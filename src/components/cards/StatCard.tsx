@@ -10,120 +10,104 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 type Props = {
   title: string;
   value: string | number;
+  subtitle?: string;
 };
 
-export default function StatCard({ title, value }: Props) {
+export default function StatCard({
+  title,
+  value,
+  subtitle,
+}: Props) {
   return (
     <Card
-      elevation={0}
       sx={{
         minWidth: 230,
-        borderRadius: "18px",
 
-        background:
-          "linear-gradient(145deg, #FFFDF8 0%, #F8F0DC 100%)",
+        borderRadius: 4,
 
-        border: "1px solid #E4D7B8",
+        boxShadow: 4,
 
-        boxShadow:
-          "0 8px 24px rgba(91, 70, 25, 0.08)",
-
-        overflow: "hidden",
-
-        transition: "all 0.25s ease",
+        transition: "0.3s",
 
         cursor: "pointer",
 
+        overflow: "hidden",
+
         "&:hover": {
           transform: "translateY(-5px)",
-          borderColor: "#C9A227",
 
-          boxShadow:
-            "0 14px 32px rgba(91, 70, 25, 0.15)",
+          boxShadow: 8,
         },
       }}
     >
-      {/* Gold Accent */}
+      {/* Gold top line */}
+
       <Box
         sx={{
           height: 6,
 
           background:
-            "linear-gradient(90deg, #9A7412, #C9A227, #E5C87B)",
+            "linear-gradient(90deg, #C9A227, #E5C76B)",
         }}
       />
 
-      <CardContent
-        sx={{
-          p: 3,
-        }}
-      >
+      <CardContent>
         {/* Icon */}
-        <Box
+
+        <TrendingUpIcon
           sx={{
-            width: 48,
-            height: 48,
-            borderRadius: "14px",
+            fontSize: 32,
 
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            mb: 1,
 
-            backgroundColor: "#F2E7C9",
-
-            border: "1px solid #E0C978",
-
-            mb: 2,
+            color: "#C9A227",
           }}
-        >
-          <TrendingUpIcon
-            sx={{
-              fontSize: 28,
-              color: "#B58A16",
-            }}
-          />
-        </Box>
+        />
 
-        {/* Title */}
+        {/* KPI Title */}
+
         <Typography
+          color="text.secondary"
           sx={{
             fontWeight: 600,
-            color: "#6B6252",
-            fontSize: "14px",
+
+            fontSize: 14,
           }}
         >
           {title}
         </Typography>
 
-        {/* Value */}
+        {/* KPI Value */}
+
         <Typography
           variant="h4"
           sx={{
             mt: 1,
 
-            fontWeight: 800,
+            fontWeight: "bold",
 
-            color: "#30291B",
-
-            letterSpacing: "-0.5px",
+            color: "#302A1C",
           }}
         >
           {value}
         </Typography>
 
-        {/* Updated */}
-        <Typography
-          variant="body2"
-          sx={{
-            mt: 1.5,
+        {/* Subtitle */}
 
-            color: "#9A7412",
+        {subtitle && (
+          <Typography
+            variant="body2"
+            sx={{
+              mt: 1,
 
-            fontWeight: 600,
-          }}
-        >
-          ↑ Updated recently
-        </Typography>
+              color: "#8B6D16",
+
+              fontWeight: 600,
+            }}
+          >
+            {subtitle}
+          </Typography>
+        )}
       </CardContent>
     </Card>
   );
