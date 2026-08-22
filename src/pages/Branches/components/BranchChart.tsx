@@ -8,13 +8,26 @@ import {
   CartesianGrid,
 } from "recharts";
 
-const data = [
-  { branch: "Nasr", rating: 4.6 },
-  { branch: "Maadi", rating: 4.2 },
-  { branch: "Dokki", rating: 3.8 },
-];
+import { useLanguage } from "../../../i18n/LanguageContext";
 
 export default function BranchChart() {
+  const { t } = useLanguage();
+
+  const data = [
+    {
+      branch: t("nasr"),
+      rating: 4.6,
+    },
+    {
+      branch: t("maadi"),
+      rating: 4.2,
+    },
+    {
+      branch: t("dokki"),
+      rating: 3.8,
+    },
+  ];
+
   return (
     <ResponsiveContainer width="100%" height={320}>
       <BarChart
@@ -59,13 +72,17 @@ export default function BranchChart() {
             backgroundColor: "#FFFDF8",
             border: "1px solid #D6B65A",
             borderRadius: "10px",
-            boxShadow: "0 6px 18px rgba(80, 60, 20, 0.12)",
+            boxShadow:
+              "0 6px 18px rgba(80, 60, 20, 0.12)",
           }}
           labelStyle={{
             color: "#29251D",
             fontWeight: 700,
           }}
-          formatter={(value) => [`${value}`, "Rating"]}
+          formatter={(value) => [
+            `${value}`,
+            t("rating"),
+          ]}
         />
 
         <Bar

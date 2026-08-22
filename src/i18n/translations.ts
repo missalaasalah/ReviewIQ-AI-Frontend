@@ -2,6 +2,10 @@ export type Language = "en" | "ar";
 
 export const translations = {
   en: {
+    // =========================================================
+    // Navigation
+    // =========================================================
+
     dashboard: "Dashboard",
     uploadReviews: "Upload Reviews",
     aspectAnalysis: "Aspect Analysis",
@@ -12,108 +16,566 @@ export const translations = {
 
     workspace: "Workspace",
 
-    smartCustomer: "Smart Customer",
-    feedbackAnalytics: "Feedback Analytics",
+    // =========================================================
+    // Project / Brand
+    // =========================================================
 
-    customerReviewIntelligence: "Customer Review Intelligence",
+    projectName: "Smart Customer Feedback Analytics",
+    projectShort: "Customer Intelligence",
 
-    analyzeFeedback:
+    dashboardTitle: "Smart Customer Feedback Analytics",
+
+    dashboardSubtitle:
       "Analyze feedback. Discover insights. Improve performance.",
+
+    // =========================================================
+    // Dashboard
+    // =========================================================
+
+    executiveOverview: "Executive Overview",
+
+    customerSatisfaction: "Customer Satisfaction",
+
+    positiveSentiment: "Positive Sentiment",
+
+    averageRating: "Average Rating",
+
+    totalReviews: "Total Reviews",
+
+    overallSatisfaction: "Overall satisfaction score",
+
+    positiveCustomerFeedback: "Positive customer feedback",
+
+    overallCustomerRating: "Overall customer rating",
+
+    customerReviewsAnalyzed: "Customer reviews analyzed",
+
+    aspectAnalysisTitle: "Aspect Analysis",
+
+    sentimentDistribution: "Sentiment Distribution",
+
+    recentReviews: "Recent Reviews",
+
+    recentCustomerReviews:
+      "Recent customer reviews will appear here.",
+
+    // =========================================================
+    // Smart Feedback
+    // =========================================================
 
     smartFeedbackIntelligence:
       "Smart Feedback Intelligence",
 
-    turnCustomerFeedback:
+    turnFeedbackIntoInsights:
       "Turn customer feedback into actionable insights.",
 
+    analyzeFeedback: "Analyze feedback",
+
+    discoverInsights: "Discover insights",
+
+    improvePerformance: "Improve performance",
+
+    // =========================================================
+    // Admin
+    // =========================================================
+
     admin: "Admin",
+
     administrator: "Administrator",
 
     profile: "Profile",
+
     logout: "Logout",
 
-    executiveOverview: "Executive Overview",
-
-    totalReviews: "Total Reviews",
-    averageRating: "Average Rating",
-    positiveReviews: "Positive Reviews",
-    negativeReviews: "Negative Reviews",
-
-    positive: "Positive",
-    neutral: "Neutral",
-    negative: "Negative",
-
-    recentReviews: "Recent Reviews",
-    aiInsights: "AI Insights",
-
-    food: "Food",
-    service: "Service",
-    delivery: "Delivery",
-    price: "Price",
+    // =========================================================
+    // Language
+    // =========================================================
 
     english: "English",
+
     arabic: "العربية",
+
+    switchToArabic: "Switch to Arabic",
+
+    switchToEnglish: "Switch to English",
+
     language: "Language",
 
-    switchToArabic: "العربية",
-    switchToEnglish: "English",
+    languageButtonEnglish: "English",
+
+    languageButtonArabic: "العربية",
+
+    // =========================================================
+    // Sentiment
+    // =========================================================
+
+    positive: "Positive",
+
+    neutral: "Neutral",
+
+    negative: "Negative",
+
+    // =========================================================
+    // Review Aspects
+    // =========================================================
+
+    service: "Service",
+
+    delivery: "Delivery",
+
+    price: "Price",
+
+    atmosphere: "Atmosphere",
+
+    food: "Food",
+
+    staff: "Staff",
+
+    quality: "Quality",
+
+    // =========================================================
+    // Branches
+    // =========================================================
+
+    branchesPerformance: "Branch Performance",
+
+    branch: "Branch",
+
+    reviews: "Reviews",
+
+    rating: "Rating",
+
+    positiveReviews: "Positive",
+
+    nasr: "Nasr",
+
+    maadi: "Maadi",
+
+    dokki: "Dokki",
+
+    // =========================================================
+    // Trends
+    // =========================================================
+
+    trend: "Trend",
+
+    trends: "Trends",
+
+    trendAnalysisTitle: "Trend Analysis",
+
+    ratingTrend: "Rating Trend",
+
+    sentimentTrend: "Sentiment Trend",
+
+    monthlyTrend: "Monthly Trend",
+
+    // =========================================================
+    // Recommendations
+    // =========================================================
+
+    recommendationsTitle: "Recommendations",
+
+    recommendationsSubtitle:
+      "Actionable recommendations based on customer feedback.",
+
+    recommendation: "Recommendation",
+
+    priority: "Priority",
+
+    high: "High",
+
+    medium: "Medium",
+
+    low: "Low",
+
+    // =========================================================
+    // Upload
+    // =========================================================
+
+    uploadReviewsTitle: "Upload Reviews",
+
+    uploadReviewsSubtitle:
+      "Upload your customer reviews file to analyze feedback.",
+
+    uploadFile: "Upload File",
+
+    chooseFile: "Choose File",
+
+    analyzeReviews: "Analyze Reviews",
+
+    noFileSelected: "No file selected",
+
+    uploadSuccess: "File uploaded successfully",
+
+    uploadError: "Failed to upload file",
+
+    // =========================================================
+    // General
+    // =========================================================
+
+    search: "Search",
+
+    filter: "Filter",
+
+    date: "Date",
+
+    status: "Status",
+
+    actions: "Actions",
+
+    view: "View",
+
+    details: "Details",
+
+    save: "Save",
+
+    cancel: "Cancel",
+
+    close: "Close",
+
+    edit: "Edit",
+
+    delete: "Delete",
+
+    loading: "Loading...",
+
+    noData: "No data available",
+
+    of: "of",
   },
 
+  // ===========================================================
+  // ARABIC
+  // ===========================================================
+
   ar: {
+    // =========================================================
+    // Navigation
+    // =========================================================
+
     dashboard: "لوحة التحكم",
-    uploadReviews: "رفع التقييمات",
+
+    uploadReviews: "رفع المراجعات",
+
     aspectAnalysis: "تحليل الجوانب",
+
     branches: "الفروع",
+
     trendAnalysis: "تحليل الاتجاهات",
+
     recommendations: "التوصيات",
+
     settings: "الإعدادات",
 
     workspace: "مساحة العمل",
 
-    smartCustomer: "تحليلات",
-    feedbackAnalytics: "آراء العملاء الذكية",
+    // =========================================================
+    // Project / Brand
+    // =========================================================
 
-    customerReviewIntelligence: "ذكاء تحليلات آراء العملاء",
+    projectName:
+      "تحليلات ذكية لملاحظات العملاء",
 
-    analyzeFeedback:
-      "حلّل آراء العملاء. اكتشف الرؤى. حسّن الأداء.",
+    projectShort:
+      "ذكاء العملاء",
+
+    dashboardTitle:
+      "تحليلات ذكية لملاحظات العملاء",
+
+    dashboardSubtitle:
+      "حلّل آراء العملاء، اكتشف الرؤى، وطوّر الأداء.",
+
+    // =========================================================
+    // Dashboard
+    // =========================================================
+
+    executiveOverview:
+      "نظرة تنفيذية عامة",
+
+    customerSatisfaction:
+      "رضا العملاء",
+
+    positiveSentiment:
+      "المشاعر الإيجابية",
+
+    averageRating:
+      "متوسط التقييم",
+
+    totalReviews:
+      "إجمالي المراجعات",
+
+    overallSatisfaction:
+      "معدل رضا العملاء",
+
+    positiveCustomerFeedback:
+      "آراء العملاء الإيجابية",
+
+    overallCustomerRating:
+      "متوسط تقييم العملاء",
+
+    customerReviewsAnalyzed:
+      "مراجعات العملاء التي تم تحليلها",
+
+    aspectAnalysisTitle:
+      "تحليل الجوانب",
+
+    sentimentDistribution:
+      "توزيع المشاعر",
+
+    recentReviews:
+      "أحدث المراجعات",
+
+    recentCustomerReviews:
+      "ستظهر أحدث مراجعات العملاء هنا.",
+
+    // =========================================================
+    // Smart Feedback
+    // =========================================================
 
     smartFeedbackIntelligence:
       "ذكاء ملاحظات العملاء",
 
-    turnCustomerFeedback:
-      "حوّل آراء العملاء إلى رؤى قابلة للتنفيذ.",
+    turnFeedbackIntoInsights:
+      "حوّل ملاحظات العملاء إلى رؤى قابلة للتنفيذ.",
 
-    admin: "المسؤول",
-    administrator: "مدير النظام",
+    analyzeFeedback:
+      "تحليل الملاحظات",
 
-    profile: "الملف الشخصي",
-    logout: "تسجيل الخروج",
+    discoverInsights:
+      "اكتشاف الرؤى",
 
-    executiveOverview: "نظرة تنفيذية عامة",
+    improvePerformance:
+      "تحسين الأداء",
 
-    totalReviews: "إجمالي التقييمات",
-    averageRating: "متوسط التقييم",
-    positiveReviews: "التقييمات الإيجابية",
-    negativeReviews: "التقييمات السلبية",
+    // =========================================================
+    // Admin
+    // =========================================================
 
-    positive: "إيجابي",
-    neutral: "محايد",
-    negative: "سلبي",
+    admin:
+      "المسؤول",
 
-    recentReviews: "أحدث التقييمات",
-    aiInsights: "رؤى الذكاء الاصطناعي",
+    administrator:
+      "مدير النظام",
 
-    food: "الطعام",
-    service: "الخدمة",
-    delivery: "التوصيل",
-    price: "السعر",
+    profile:
+      "الملف الشخصي",
 
-    english: "English",
-    arabic: "العربية",
-    language: "اللغة",
+    logout:
+      "تسجيل الخروج",
 
-    switchToArabic: "العربية",
-    switchToEnglish: "English",
+    // =========================================================
+    // Language
+    // =========================================================
+
+    english:
+      "English",
+
+    arabic:
+      "العربية",
+
+    switchToArabic:
+      "التبديل إلى العربية",
+
+    switchToEnglish:
+      "التبديل إلى الإنجليزية",
+
+    language:
+      "اللغة",
+
+    languageButtonEnglish:
+      "English",
+
+    languageButtonArabic:
+      "العربية",
+
+    // =========================================================
+    // Sentiment
+    // =========================================================
+
+    positive:
+      "إيجابي",
+
+    neutral:
+      "محايد",
+
+    negative:
+      "سلبي",
+
+    // =========================================================
+    // Review Aspects
+    // =========================================================
+
+    service:
+      "الخدمة",
+
+    delivery:
+      "التوصيل",
+
+    price:
+      "السعر",
+
+    atmosphere:
+      "الأجواء",
+
+    food:
+      "الطعام",
+
+    staff:
+      "الموظفون",
+
+    quality:
+      "الجودة",
+
+    // =========================================================
+    // Branches
+    // =========================================================
+
+    branchesPerformance:
+      "أداء الفروع",
+
+    branch:
+      "الفرع",
+
+    reviews:
+      "المراجعات",
+
+    rating:
+      "التقييم",
+
+    positiveReviews:
+      "إيجابي",
+
+    nasr:
+      "مدينة نصر",
+
+    maadi:
+      "المعادي",
+
+    dokki:
+      "الدقي",
+
+    // =========================================================
+    // Trends
+    // =========================================================
+
+    trend:
+      "الاتجاه",
+
+    trends:
+      "الاتجاهات",
+
+    trendAnalysisTitle:
+      "تحليل الاتجاهات",
+
+    ratingTrend:
+      "اتجاه التقييمات",
+
+    sentimentTrend:
+      "اتجاه المشاعر",
+
+    monthlyTrend:
+      "الاتجاه الشهري",
+
+    // =========================================================
+    // Recommendations
+    // =========================================================
+
+    recommendationsTitle:
+      "التوصيات",
+
+    recommendationsSubtitle:
+      "توصيات قابلة للتنفيذ بناءً على آراء العملاء.",
+
+    recommendation:
+      "التوصية",
+
+    priority:
+      "الأولوية",
+
+    high:
+      "مرتفع",
+
+    medium:
+      "متوسط",
+
+    low:
+      "منخفض",
+
+    // =========================================================
+    // Upload
+    // =========================================================
+
+    uploadReviewsTitle:
+      "رفع المراجعات",
+
+    uploadReviewsSubtitle:
+      "ارفع ملف مراجعات العملاء لتحليل ملاحظاتهم.",
+
+    uploadFile:
+      "رفع الملف",
+
+    chooseFile:
+      "اختيار ملف",
+
+    analyzeReviews:
+      "تحليل المراجعات",
+
+    noFileSelected:
+      "لم يتم اختيار ملف",
+
+    uploadSuccess:
+      "تم رفع الملف بنجاح",
+
+    uploadError:
+      "فشل رفع الملف",
+
+    // =========================================================
+    // General
+    // =========================================================
+
+    search:
+      "بحث",
+
+    filter:
+      "تصفية",
+
+    date:
+      "التاريخ",
+
+    status:
+      "الحالة",
+
+    actions:
+      "الإجراءات",
+
+    view:
+      "عرض",
+
+    details:
+      "التفاصيل",
+
+    save:
+      "حفظ",
+
+    cancel:
+      "إلغاء",
+
+    close:
+      "إغلاق",
+
+    edit:
+      "تعديل",
+
+    delete:
+      "حذف",
+
+    loading:
+      "جارٍ التحميل...",
+
+    noData:
+      "لا توجد بيانات متاحة",
+
+    of:
+      "من",
   },
 } as const;

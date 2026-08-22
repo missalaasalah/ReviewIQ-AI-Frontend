@@ -1,35 +1,56 @@
 import {
   createContext,
   useContext,
-  useMemo,
+  useEffect,
   useState,
+  type ReactNode,
 } from "react";
 
-import type { ReactNode } from "react";
+import {
+  translations,
+  type Language,
+} from "./translations";
 
-import { translations } from "./translations";
-import type { Language } from "./translations";
+type Direction = "ltr" | "rtl";
 
-type LanguageContextType = {
+interface LanguageContextType {
   language: Language;
-  direction: "rtl" | "ltr";
+  direction: Direction;
   t: (key: keyof typeof translations.en) => string;
   toggleLanguage: () => void;
-};
+}
 
 const LanguageContext = createContext<
   LanguageContextType | undefined
 >(undefined);
 
-type LanguageProviderProps = {
-  children: ReactNode;
-};
-
 export function LanguageProvider({
   children,
-}: LanguageProviderProps) {
-  const [language, setLanguage] =
-    useState<Language>("en");
+}: {
+  children: ReactNode;
+}) {
+  const [language, setLanguage] = useState<Language>(() => {
+    const savedLanguage = localStorage.getItem(
+      "reviewiq-language"
+    ) as Language | null;
+
+    return savedLanguage === "ar" ? "ar" : "en";
+  });
+
+  const direction: Direction =
+    language === "ar" ? "rtl" : "ltr";
+
+  useEffect(() => {
+    localStorage.setItem(
+      "reviewiq-language",
+      language
+    );
+
+    document.documentElement.lang = language;
+    document.documentElement.dir = direction;
+
+    document.body.dir = direction;
+  }, [language, direction]);
 
   const toggleLanguage = () => {
     setLanguage((current: Language) =>
@@ -37,22 +58,18 @@ export function LanguageProvider({
     );
   };
 
-  const direction: "rtl" | "ltr" =
-    language === "ar" ? "rtl" : "ltr";
+  const t = (
+    key: keyof typeof translations.en
+  ): string => {
+    return translations[language][key];
+  };
 
-  const value = useMemo<LanguageContextType>(
-    () => ({
-      language,
-      direction,
-
-      t: (key) => {
-        return translations[language][key] ?? key;
-      },
-
-      toggleLanguage,
-    }),
-    [language, direction]
-  );
+  const value: LanguageContextType = {
+    language,
+    direction,
+    t,
+    toggleLanguage,
+  };
 
   return (
     <LanguageContext.Provider value={value}>
