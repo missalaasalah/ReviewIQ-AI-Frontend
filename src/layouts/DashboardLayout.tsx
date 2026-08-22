@@ -28,9 +28,8 @@ import ShowChartIcon from "@mui/icons-material/ShowChart";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import AutoGraphIcon from "@mui/icons-material/AutoGraph";
 
-const drawerWidth = 260;
+const drawerWidth = 270;
 
 const navigationItems = [
   {
@@ -104,12 +103,17 @@ export default function DashboardLayout() {
         height: "100%",
         display: "flex",
         flexDirection: "column",
+
         background:
-          "linear-gradient(180deg, #171717 0%, #202020 55%, #292929 100%)",
+          "linear-gradient(180deg, #17130B 0%, #211B0D 50%, #2A2415 100%)",
+
         color: "#FFFFFF",
       }}
     >
-      {/* Brand */}
+      {/* =========================================================
+          BRAND
+      ========================================================= */}
+
       <Box
         sx={{
           px: 2.5,
@@ -123,61 +127,99 @@ export default function DashboardLayout() {
             gap: 1.5,
           }}
         >
-          {/* ReviewIQ Logo */}
+          {/* Logo */}
+
           <Box
             sx={{
-              width: 44,
-              height: 44,
-              borderRadius: "14px",
+              width: 54,
+              height: 54,
+
+              borderRadius: "15px",
+
+              overflow: "hidden",
+
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              background:
-                "linear-gradient(135deg, #C9A227 0%, #E5C87B 100%)",
-              boxShadow: "0 8px 24px rgba(201, 162, 39, 0.28)",
+
+              backgroundColor: "#FFFFFF",
+
+              border: "1px solid rgba(218,174,58,0.35)",
+
+              boxShadow:
+                "0 8px 24px rgba(218,174,58,0.25)",
+
+              flexShrink: 0,
             }}
           >
-            <AutoGraphIcon
+            <Box
+              component="img"
+              src="/logo.png"
+              alt="Smart Customer Feedback Analytics"
               sx={{
-                color: "#171717",
-                fontSize: 26,
+                width: "100%",
+                height: "100%",
+
+                objectFit: "contain",
+
+                display: "block",
               }}
             />
           </Box>
 
-          <Typography
+          {/* Project Name */}
+
+          <Box
             sx={{
-              fontSize: 21,
-              fontWeight: 800,
-              lineHeight: 1.1,
-              letterSpacing: "-0.5px",
-              color: "#FFFDF8",
+              minWidth: 0,
             }}
           >
-            Review
-            <Box
-              component="span"
+            <Typography
               sx={{
-                color: "#D5B34A",
+                fontSize: 15,
+                fontWeight: 800,
+                lineHeight: 1.2,
+
+                color: "#F1CD68",
+
+                letterSpacing: "-0.2px",
               }}
             >
-              IQ
-            </Box>
-          </Typography>
+              Smart Customer
+            </Typography>
+
+            <Typography
+              sx={{
+                fontSize: 12,
+                fontWeight: 600,
+                lineHeight: 1.35,
+
+                color: "#FFFFFF",
+
+                mt: 0.3,
+              }}
+            >
+              Feedback Analytics
+            </Typography>
+          </Box>
         </Box>
       </Box>
 
       <Divider
         sx={{
-          borderColor: "rgba(255,255,255,0.08)",
+          borderColor: "rgba(218,174,58,0.16)",
         }}
       />
 
-      {/* Navigation */}
+      {/* =========================================================
+          NAVIGATION
+      ========================================================= */}
+
       <Box
         sx={{
           px: 1.5,
           py: 2,
+
           flex: 1,
         }}
       >
@@ -185,10 +227,14 @@ export default function DashboardLayout() {
           sx={{
             px: 1.5,
             mb: 1,
+
             fontSize: 11,
             fontWeight: 700,
-            color: "#9A9282",
+
+            color: "#A99B76",
+
             letterSpacing: 1.2,
+
             textTransform: "uppercase",
           }}
         >
@@ -214,99 +260,144 @@ export default function DashboardLayout() {
                 }
               }}
               sx={{
-                minHeight: 48,
+                minHeight: 49,
+
                 borderRadius: 2.5,
+
                 px: 1.5,
-                color: "#C9C3B6",
-                transition: "all 0.2s ease",
+
+                color: "#D3CBB8",
+
+                transition:
+                  "all 0.2s ease",
 
                 "& .MuiListItemIcon-root": {
                   minWidth: 40,
-                  color: "#918B7D",
-                  transition: "all 0.2s ease",
+
+                  color: "#A99C7A",
+
+                  transition:
+                    "all 0.2s ease",
                 },
 
                 "& .MuiListItemText-primary": {
                   fontSize: 14,
+
                   fontWeight: 500,
-                  transition: "all 0.2s ease",
+
+                  transition:
+                    "all 0.2s ease",
                 },
+
+                /* =========================
+                   HOVER
+                ========================= */
 
                 "&:hover": {
-                  backgroundColor: "rgba(201,162,39,0.10)",
-                  color: "#FFFDF8",
-                  transform: "translateX(3px)",
+                  backgroundColor:
+                    "rgba(218,174,58,0.10)",
+
+                  color: "#FFF9E8",
+
+                  transform:
+                    "translateX(3px)",
 
                   "& .MuiListItemIcon-root": {
-                    color: "#D5B34A",
+                    color: "#E5C76B",
                   },
                 },
+
+                /* =========================
+                   ACTIVE
+                ========================= */
 
                 "&.active": {
                   background:
-                    "linear-gradient(90deg, rgba(201,162,39,0.96), rgba(229,200,123,0.78))",
-                  color: "#171717",
+                    "linear-gradient(90deg, #C9A227 0%, #E5C76B 100%)",
+
+                  color: "#17130B",
+
                   boxShadow:
-                    "0 8px 22px rgba(201,162,39,0.20)",
+                    "0 8px 24px rgba(201,162,39,0.25)",
 
                   "& .MuiListItemIcon-root": {
-                    color: "#171717",
+                    color: "#17130B",
                   },
 
                   "& .MuiListItemText-primary": {
-                    fontWeight: 700,
+                    fontWeight: 800,
                   },
 
                   "&:hover": {
                     background:
-                      "linear-gradient(90deg, #C9A227, #E5C87B)",
+                      "linear-gradient(90deg, #B88E19 0%, #E5C76B 100%)",
                   },
                 },
               }}
             >
-              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemIcon>
+                {item.icon}
+              </ListItemIcon>
 
-              <ListItemText primary={item.label} />
+              <ListItemText
+                primary={item.label}
+              />
             </ListItemButton>
           ))}
         </List>
       </Box>
 
-      {/* Sidebar Footer */}
+      {/* =========================================================
+          SIDEBAR FOOTER
+      ========================================================= */}
+
       <Box
         sx={{
           px: 2,
           py: 2,
-          borderTop: "1px solid rgba(255,255,255,0.08)",
+
+          borderTop:
+            "1px solid rgba(218,174,58,0.12)",
         }}
       >
         <Box
           sx={{
             p: 1.5,
+
             borderRadius: 2.5,
+
             background:
-              "linear-gradient(135deg, rgba(201,162,39,0.10), rgba(255,255,255,0.03))",
-            border: "1px solid rgba(201,162,39,0.14)",
+              "linear-gradient(135deg, rgba(201,162,39,0.12), rgba(255,255,255,0.03))",
+
+            border:
+              "1px solid rgba(218,174,58,0.16)",
           }}
         >
           <Typography
             sx={{
               fontSize: 12,
-              fontWeight: 700,
-              color: "#E5C87B",
+
+              fontWeight: 800,
+
+              color: "#E5C76B",
             }}
           >
-            Review Intelligence
+            Smart Feedback Intelligence
           </Typography>
 
           <Typography
             sx={{
               fontSize: 11,
-              color: "#918B7D",
+
+              color: "#A99C7A",
+
               mt: 0.5,
+
+              lineHeight: 1.5,
             }}
           >
-            Turn customer feedback into insights.
+            Turn customer feedback into
+            actionable insights.
           </Typography>
         </Box>
       </Box>
@@ -317,29 +408,42 @@ export default function DashboardLayout() {
     <Box
       sx={{
         display: "flex",
+
         minHeight: "100vh",
-        backgroundColor: "#F5EFE0",
+
+        background:
+          "linear-gradient(135deg, #F8F3E7 0%, #F5EBD2 100%)",
       }}
     >
-      {/* Mobile Menu Button */}
+      {/* =========================================================
+          MOBILE MENU BUTTON
+      ========================================================= */}
+
       {isMobile && (
         <IconButton
           onClick={handleDrawerToggle}
           sx={{
             position: "fixed",
+
             top: 12,
             left: 12,
+
             zIndex: 1400,
+
             width: 42,
             height: 42,
-            color: "#171717",
+
+            color: "#17130B",
+
             background:
-              "linear-gradient(135deg, #C9A227, #E5C87B)",
-            boxShadow: 3,
+              "linear-gradient(135deg, #C9A227, #E5C76B)",
+
+            boxShadow:
+              "0 6px 18px rgba(201,162,39,0.30)",
 
             "&:hover": {
               background:
-                "linear-gradient(135deg, #B89420, #D9B968)",
+                "linear-gradient(135deg, #B88E19, #D9B85E)",
             },
           }}
         >
@@ -347,21 +451,33 @@ export default function DashboardLayout() {
         </IconButton>
       )}
 
-      {/* Sidebar */}
+      {/* =========================================================
+          SIDEBAR
+      ========================================================= */}
+
       <Box
         component="nav"
         sx={{
           width: {
             md: drawerWidth,
           },
+
           flexShrink: {
             md: 0,
           },
         }}
       >
         <Drawer
-          variant={isMobile ? "temporary" : "permanent"}
-          open={isMobile ? mobileOpen : true}
+          variant={
+            isMobile
+              ? "temporary"
+              : "permanent"
+          }
+          open={
+            isMobile
+              ? mobileOpen
+              : true
+          }
           onClose={handleDrawerToggle}
           ModalProps={{
             keepMounted: true,
@@ -369,10 +485,13 @@ export default function DashboardLayout() {
           sx={{
             "& .MuiDrawer-paper": {
               width: drawerWidth,
+
               boxSizing: "border-box",
+
               border: "none",
+
               boxShadow:
-                "4px 0 24px rgba(23,23,23,0.14)",
+                "5px 0 28px rgba(35,29,14,0.18)",
             },
           }}
         >
@@ -380,30 +499,46 @@ export default function DashboardLayout() {
         </Drawer>
       </Box>
 
-      {/* Main Area */}
+      {/* =========================================================
+          MAIN AREA
+      ========================================================= */}
+
       <Box
         sx={{
           flexGrow: 1,
+
           minWidth: 0,
+
           display: "flex",
+
           flexDirection: "column",
         }}
       >
-        {/* Header */}
+        {/* =======================================================
+            HEADER
+        ======================================================= */}
+
         <AppBar
           position="sticky"
           elevation={0}
           sx={{
-            backgroundColor: "rgba(255,253,248,0.94)",
-            backdropFilter: "blur(12px)",
+            backgroundColor:
+              "rgba(255,252,245,0.94)",
+
+            backdropFilter:
+              "blur(12px)",
+
             borderBottom:
               "1px solid rgba(201,162,39,0.18)",
-            color: "#242424",
+
+            color: "#242018",
           }}
         >
           <Toolbar
             sx={{
-              minHeight: "72px !important",
+              minHeight:
+                "72px !important",
+
               px: {
                 xs: 2,
                 sm: 3,
@@ -411,9 +546,12 @@ export default function DashboardLayout() {
               },
             }}
           >
+            {/* Header Title */}
+
             <Box
               sx={{
                 flexGrow: 1,
+
                 ml: {
                   xs: 6,
                   md: 0,
@@ -426,45 +564,59 @@ export default function DashboardLayout() {
                     xs: 15,
                     sm: 17,
                   },
-                  fontWeight: 700,
-                  color: "#242424",
+
+                  fontWeight: 800,
+
+                  color: "#302A1C",
                 }}
               >
-                Customer Review Intelligence
+                Smart Customer Feedback
+                Analytics
               </Typography>
 
               <Typography
                 sx={{
                   fontSize: 12,
-                  color: "#786F60",
+
+                  color: "#81755D",
+
                   mt: 0.3,
+
                   display: {
                     xs: "none",
                     sm: "block",
                   },
                 }}
               >
-                Analyze feedback. Discover insights. Improve performance.
+                Analyze feedback. Discover
+                insights. Improve performance.
               </Typography>
             </Box>
 
-            {/* Admin */}
+            {/* =================================================
+                ADMIN
+            ================================================= */}
+
             <Box>
               <IconButton
                 onClick={handleClick}
                 sx={{
                   px: 1,
+
                   borderRadius: 2.5,
-                  color: "#403B33",
+
+                  color: "#403A2C",
 
                   "&:hover": {
-                    backgroundColor: "rgba(201,162,39,0.10)",
+                    backgroundColor:
+                      "rgba(201,162,39,0.10)",
                   },
                 }}
               >
                 <AccountCircleIcon
                   sx={{
                     fontSize: 32,
+
                     color: "#B28D1E",
                   }}
                 />
@@ -472,19 +624,24 @@ export default function DashboardLayout() {
                 <Box
                   sx={{
                     ml: 1,
+
                     display: {
                       xs: "none",
                       sm: "block",
                     },
+
                     textAlign: "left",
                   }}
                 >
                   <Typography
                     sx={{
                       fontSize: 13,
-                      fontWeight: 700,
+
+                      fontWeight: 800,
+
                       lineHeight: 1.2,
-                      color: "#242424",
+
+                      color: "#302A1C",
                     }}
                   >
                     Admin
@@ -493,7 +650,9 @@ export default function DashboardLayout() {
                   <Typography
                     sx={{
                       fontSize: 11,
-                      color: "#786F60",
+
+                      color: "#81755D",
+
                       lineHeight: 1.2,
                     }}
                   >
@@ -502,6 +661,10 @@ export default function DashboardLayout() {
                 </Box>
               </IconButton>
 
+              {/* =================================================
+                  ADMIN MENU
+              ================================================= */}
+
               <Menu
                 anchorEl={anchorEl}
                 open={open}
@@ -509,51 +672,98 @@ export default function DashboardLayout() {
                 slotProps={{
                   paper: {
                     elevation: 6,
+
                     sx: {
                       mt: 1,
-                      minWidth: 170,
+
+                      minWidth: 180,
+
                       borderRadius: 2.5,
+
                       border:
-                        "1px solid rgba(201,162,39,0.20)",
-                      backgroundColor: "#FFFDF8",
+                        "1px solid rgba(201,162,39,0.22)",
+
+                      backgroundColor:
+                        "#FFFDF8",
+
+                      boxShadow:
+                        "0 12px 30px rgba(50,40,15,0.14)",
                     },
                   },
                 }}
               >
                 <MenuItem
-                  onClick={() => handleNavigation("/profile")}
+                  onClick={() =>
+                    handleNavigation(
+                      "/profile"
+                    )
+                  }
                   sx={{
                     py: 1.2,
+
                     borderRadius: 1,
+
                     mx: 0.5,
+
+                    "&:hover": {
+                      backgroundColor:
+                        "rgba(201,162,39,0.10)",
+                    },
                   }}
                 >
                   Profile
                 </MenuItem>
 
                 <MenuItem
-                  onClick={() => handleNavigation("/settings")}
+                  onClick={() =>
+                    handleNavigation(
+                      "/settings"
+                    )
+                  }
                   sx={{
                     py: 1.2,
+
                     borderRadius: 1,
+
                     mx: 0.5,
+
+                    "&:hover": {
+                      backgroundColor:
+                        "rgba(201,162,39,0.10)",
+                    },
                   }}
                 >
                   Settings
                 </MenuItem>
 
-                <Divider sx={{ my: 0.5 }} />
+                <Divider
+                  sx={{
+                    my: 0.5,
+
+                    borderColor:
+                      "rgba(201,162,39,0.15)",
+                  }}
+                />
 
                 <MenuItem
                   onClick={() => {
                     handleClose();
+
                     alert("Logged out");
                   }}
                   sx={{
                     py: 1.2,
+
                     borderRadius: 1,
+
                     mx: 0.5,
+
                     color: "#B94A48",
+
+                    "&:hover": {
+                      backgroundColor:
+                        "rgba(185,74,72,0.08)",
+                    },
                   }}
                 >
                   Logout
@@ -563,17 +773,23 @@ export default function DashboardLayout() {
           </Toolbar>
         </AppBar>
 
-        {/* Page Content */}
+        {/* =======================================================
+            PAGE CONTENT
+        ======================================================= */}
+
         <Box
           component="main"
           sx={{
             flexGrow: 1,
+
             p: {
               xs: 2,
               sm: 3,
               md: 4,
             },
-            backgroundColor: "#F5EFE0",
+
+            background:
+              "linear-gradient(135deg, #F8F3E7 0%, #F5EBD2 100%)",
           }}
         >
           <Outlet />
